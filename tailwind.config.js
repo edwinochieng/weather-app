@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       width:{
-        '128' : '32 rem',
+        '128' : '32rem',
       }
     },
   },
