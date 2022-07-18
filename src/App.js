@@ -10,6 +10,7 @@ function App() {
 
   const [weather,setWeather] =useState([]);
   const [conditions, setConditions] = useState({});
+  const [showWeather, setShowWeather] = useState(false);
   
   const getWeather = async(cityName) =>{
     const apiKey = process.env.REACT_APP_API_KEY;
@@ -18,7 +19,7 @@ function App() {
     const data = await api.json();
     setWeather(data.weather[0]);
     setConditions(data.main)
-    
+    setShowWeather(true);
     
   
   }
@@ -27,14 +28,15 @@ function App() {
       <City
         onAdd = {getWeather}
       />
-      <Weatherinfo
+      {showWeather?<Weatherinfo
         
         description = {weather.description}
         temperature = {conditions.temp}
         humidity = {conditions.humidity}
         pressure = {conditions.pressure}
         icon = {weather.icon}
-      />
+      /> : null}
+      
     </div>
   );
 }
